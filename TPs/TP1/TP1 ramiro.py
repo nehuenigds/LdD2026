@@ -511,16 +511,22 @@ print("\nModelo 1:")
 
 print("\nModelo lineal con predictores: fage, mage, visits, gained,sex_bin, habit_bin, marital_bin, whitemom_bin, mature_bin")
 
-X = np.array(X_entrenamiento[["fage", "mage", "visits", "gained","sex_bin", "habit_bin", "marital_bin", "whitemom_bin", "mature_bin"]])
+features1 = ["fage", "mage", "visits", "gained", "sex_bin", "habit_bin", "marital_bin", "whitemom_bin", "mature_bin"]
+
+X = np.array(X_entrenamiento[features1])
 y = np.array(y_entrenamiento)
 reg = LinearRegression()
-reg.fit(X,y)
-y_pred = reg.predict(X)
-MAE1 = mean_absolute_error(y, y_pred)
-R21 = r2_score(y, y_pred)
+reg.fit(X, y)
 
-print("\nMAE:", MAE1)
-print("R²:", R21)
+MAE1_train = mean_absolute_error(y, reg.predict(X))
+R21_train = r2_score(y, reg.predict(X))
+
+y_pred_val = reg.predict(np.array(X_validación[features1]))
+MAE1 = mean_absolute_error(y_validación, y_pred_val)
+R21 = r2_score(y_validación, y_pred_val)
+
+print("\nMAE entrenamiento:", MAE1_train, "| MAE validación:", MAE1)
+print("R² entrenamiento:", R21_train, "| R² validación:", R21)
 
 print("\n--------------------")
 
@@ -529,16 +535,22 @@ print("\nModelo 2:")
 print("\nModelo lineal con predictores: mage, visits, gained,sex_bin, habit_bin, whitemom_bin")
 
 
-X = np.array(X_entrenamiento[["mage", "visits", "gained","sex_bin", "habit_bin", "whitemom_bin"]])
+features2 = ["mage", "visits", "gained", "sex_bin", "habit_bin", "whitemom_bin"]
+
+X = np.array(X_entrenamiento[features2])
 y = np.array(y_entrenamiento)
 reg = LinearRegression()
-reg.fit(X,y)
-y_pred = reg.predict(X)
-MAE2 = mean_absolute_error(y, y_pred)
-R22 = r2_score(y, y_pred)
+reg.fit(X, y)
 
-print("\nMAE:", MAE2)
-print("R²:", R22)
+MAE2_train = mean_absolute_error(y, reg.predict(X))
+R22_train = r2_score(y, reg.predict(X))
+
+y_pred_val = reg.predict(np.array(X_validación[features2]))
+MAE2 = mean_absolute_error(y_validación, y_pred_val)
+R22 = r2_score(y_validación, y_pred_val)
+
+print("\nMAE entrenamiento:", MAE2_train, "| MAE validación:", MAE2)
+print("R² entrenamiento:", R22_train, "| R² validación:", R22)
 
 print("\n--------------------")
 
@@ -546,16 +558,22 @@ print("\nModelo 3:")
 
 print("\nModelo lineal con predictores: mage, gained,habit_bin, whitemom_bin")
 
-X = np.array(X_entrenamiento[["mage","gained","habit_bin", "whitemom_bin"]])
+features3 = ["mage", "gained", "habit_bin", "whitemom_bin"]
+
+X = np.array(X_entrenamiento[features3])
 y = np.array(y_entrenamiento)
 reg = LinearRegression()
-reg.fit(X,y)
-y_pred = reg.predict(X)
-MAE3 = mean_absolute_error(y, y_pred)
-R23 = r2_score(y, y_pred)
+reg.fit(X, y)
 
-print("\nMAE:", MAE3)
-print("R²:", R23)
+MAE3_train = mean_absolute_error(y, reg.predict(X))
+R23_train = r2_score(y, reg.predict(X))
+
+y_pred_val = reg.predict(np.array(X_validación[features3]))
+MAE3 = mean_absolute_error(y_validación, y_pred_val)
+R23 = r2_score(y_validación, y_pred_val)
+
+print("\nMAE entrenamiento:", MAE3_train, "| MAE validación:", MAE3)
+print("R² entrenamiento:", R23_train, "| R² validación:", R23)
 
 print("\n--------------------")
 
@@ -563,23 +581,31 @@ print("\nModelo 4:")
 
 print("\nModelo lineal con predictores: mage, gained,whitemom_bin")
 
-X = np.array(X_entrenamiento[["mage","gained", "whitemom_bin"]])
+features4 = ["mage", "gained", "whitemom_bin"]
+
+X = np.array(X_entrenamiento[features4])
 y = np.array(y_entrenamiento)
 reg = LinearRegression()
-reg.fit(X,y)
-y_pred = reg.predict(X)
-MAE4 = mean_absolute_error(y, y_pred)
-R24 = r2_score(y, y_pred)
+reg.fit(X, y)
 
-print("\nMAE:", MAE4)
-print("R²:", R24)
+MAE4_train = mean_absolute_error(y, reg.predict(X))
+R24_train = r2_score(y, reg.predict(X))
+
+y_pred_val = reg.predict(np.array(X_validación[features4]))
+MAE4 = mean_absolute_error(y_validación, y_pred_val)
+R24 = r2_score(y_validación, y_pred_val)
+
+print("\nMAE entrenamiento:", MAE4_train, "| MAE validación:", MAE4)
+print("R² entrenamiento:", R24_train, "| R² validación:", R24)
 
 
 print("\n--------------------")
 
 print("\nModelo 5:")
 
-print("\nModelo lineal con predictores: mage, gained,whitemom_bin")
+print("\nModelo lineal con predictores (features combinadas): visits/mage, gained, gained/visits, sex_bin*gained, habit_bin*gained, visits*mage")
+
+features5 = ["visits/mage", "gained", "gained/visits", "sex_bin*gained", "habit_bin*gained", "visits*mage"]
 
 visitas_seguras = X_entrenamiento["visits"].replace(0.0, 1.0)
 
@@ -590,16 +616,71 @@ X_entrenamiento["habit_bin*gained"] = X_entrenamiento["habit_bin"] * X_entrenami
 X_entrenamiento["sex_bin*gained"] = X_entrenamiento["sex_bin"] * X_entrenamiento["gained"]
 X_entrenamiento["visits*mage"] = X_entrenamiento["visits"] * X_entrenamiento["mage"]
 
-X = np.array(X_entrenamiento[["visits/mage", "gained", "gained/visits", "sex_bin*gained", "habit_bin*gained", "visits*mage"]])
+visitas_seguras_val = X_validación["visits"].replace(0.0, 1.0)
+
+X_validación["visits/mage"] = X_validación["visits"] / X_validación["mage"]
+X_validación["gained/visits"] = X_validación["gained"] /visitas_seguras_val
+X_validación["habit_bin*gained"] = X_validación["habit_bin"] * X_validación["gained"]
+X_validación["sex_bin*gained"] = X_validación["sex_bin"] * X_validación["gained"]
+X_validación["visits*mage"] = X_validación["visits"] * X_validación["mage"]
+
+X = np.array(X_entrenamiento[features5])
 y = np.array(y_entrenamiento)
 reg = LinearRegression()
-reg.fit(X,y)
-y_pred = reg.predict(X)
-MAE5 = mean_absolute_error(y, y_pred)
-R25 = r2_score(y, y_pred)
+reg.fit(X, y)
 
-print("\nMAE:", MAE5)
-print("R²:", R25)
+MAE5_train = mean_absolute_error(y, reg.predict(X))
+R25_train = r2_score(y, reg.predict(X))
+
+y_pred_val = reg.predict(np.array(X_validación[features5]))
+MAE5 = mean_absolute_error(y_validación, y_pred_val)
+R25 = r2_score(y_validación, y_pred_val)
+
+print("\nMAE entrenamiento:", MAE5_train, "| MAE validación:", MAE5)
+print("R² entrenamiento:", R25_train, "| R² validación:", R25)
+
+print("\n--------------------")
+
+print("\nModelo 6:")
+
+print("\nModelo lineal con predictores: mage, gained,habit_bin, whitemom_bin (excluyendo pesos extremos: weight < 4 libras)")
+
+features6 = ["mage", "gained", "habit_bin", "whitemom_bin"]
+
+mascara_entrenamiento = y_entrenamiento >= 4
+mascara_validación = y_validación >= 4
+
+X6_entrenamiento = X_entrenamiento.loc[mascara_entrenamiento, features6]
+y6_entrenamiento = y_entrenamiento[mascara_entrenamiento]
+X6_validación = X_validación.loc[mascara_validación, features6]
+y6_validación = y_validación[mascara_validación]
+
+print("\nSe excluyen", (~mascara_entrenamiento).sum(), "casos en entrenamiento y", (~mascara_validación).sum(), "casos en validación con peso < 4 libras")
+
+X = np.array(X6_entrenamiento)
+y = np.array(y6_entrenamiento)
+reg = LinearRegression()
+reg.fit(X, y)
+
+MAE6_train = mean_absolute_error(y, reg.predict(X))
+R26_train = r2_score(y, reg.predict(X))
+
+y_pred_val = reg.predict(np.array(X6_validación))
+MAE6 = mean_absolute_error(y6_validación, y_pred_val)
+R26 = r2_score(y6_validación, y_pred_val)
+
+print("\nMAE entrenamiento:", MAE6_train, "| MAE validación:", MAE6)
+print("R² entrenamiento:", R26_train, "| R² validación:", R26)
+
+print("\n--------------------")
+
+print("\nCOMPARACIÓN DE MODELOS (sobre datos de validación):")
+print("Modelo 1 -> MAE:", MAE1, "| R²:", R21)
+print("Modelo 2 -> MAE:", MAE2, "| R²:", R22)
+print("Modelo 3 -> MAE:", MAE3, "| R²:", R23)
+print("Modelo 4 -> MAE:", MAE4, "| R²:", R24)
+print("Modelo 5 -> MAE:", MAE5, "| R²:", R25)
+print("Modelo 6 -> MAE:", MAE6, "| R²:", R26, "(sin pesos < 4 libras)")
 
 
 
