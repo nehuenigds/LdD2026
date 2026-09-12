@@ -1,0 +1,18 @@
+comparacion_id,nombre,origen,filtrar_weight_menor_4,id_fuerza_bruta,puesto_original,alias,terminos,n_terminos
+0,Ramiro 1,Manual,False,,,Ramiro 1,fage + mage + visits + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + mature_bin,9
+1,Ramiro 2,Manual,False,,,Ramiro 2,mage + visits + gained + sex_bin + habit_bin + whitemom_bin,6
+2,Ramiro 3,Manual,False,,,Ramiro 3,mage + gained + habit_bin + whitemom_bin,4
+3,Ramiro 4,Manual,False,,,Ramiro 4,mage + gained + whitemom_bin,3
+4,Ramiro 5,Manual,False,,,Ramiro 5,visits/mage + gained + gained/visits_seguras + sex_bin*gained + habit_bin*gained + visits*mage,6
+5,Ramiro 6,Manual,True,,,Ramiro 6,mage + gained + habit_bin + whitemom_bin + marital_bin + sex_bin,6
+6,Ramiro 7,Manual,False,,,Ramiro 7,mage + gained + mage^2 + mage*gained + gained^2,5
+7,FB 16661,Top 10 fuerza bruta,False,16661.0,1.0,FB 16661,fage + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + sex_bin*marital_bin + marital_bin*whitemom_bin,8
+8,FB 20247,Top 10 fuerza bruta,False,20247.0,2.0,FB 20247,visits + gained + sex_bin + marital_bin + whitemom_bin + mature_bin + visits*mature_bin + sex_bin*marital_bin,8
+9,FB 27126,Top 10 fuerza bruta,False,27126.0,3.0,FB 27126,fage + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + mature_bin + sex_bin*marital_bin + marital_bin*whitemom_bin,9
+10,FB 10210,Top 10 fuerza bruta,False,10210.0,4.0,FB 10210,gained + sex_bin + habit_bin + marital_bin + whitemom_bin + sex_bin*marital_bin + marital_bin*whitemom_bin,7
+11,FB 25574,Top 10 fuerza bruta,False,25574.0,5.0,FB 25574,fage + visits + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + fage*visits + marital_bin*whitemom_bin,9
+12,FB 32316,Top 10 fuerza bruta,False,32316.0,6.0,FB 32316,mage + visits + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + mature_bin + mage*visits + sex_bin*marital_bin,10
+13,FB 6743,Top 10 fuerza bruta,False,6743.0,7.0,FB 6743,fage + gained + sex_bin + marital_bin + whitemom_bin + sex_bin*marital_bin + marital_bin*whitemom_bin,7
+14,FB 20630,Top 10 fuerza bruta,False,20630.0,8.0,FB 20630,gained + sex_bin + habit_bin + marital_bin + whitemom_bin + mature_bin + sex_bin*marital_bin + marital_bin*whitemom_bin,8
+15,FB 28899,Top 10 fuerza bruta,False,28899.0,9.0,FB 28899,visits + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + mature_bin + visits*mature_bin + sex_bin*marital_bin,9
+16,FB 31909,Top 10 fuerza bruta,False,31909.0,10.0,FB 31909,fage + visits + gained + sex_bin + habit_bin + marital_bin + whitemom_bin + mature_bin + fage*visits + sex_bin*marital_bin,10

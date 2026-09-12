@@ -1,0 +1,11 @@
+{
+  "seed": 42,
+  "folds": 5,
+  "max_interacciones": 2,
+  "n_filas": 675,
+  "n_modelos": 33343,
+  "anidada": true,
+  "objetivo_seleccion": "MAE promedio; desempate por menos términos y modelo_id",
+  "modelo_base_id": 32676,
+  "alcance": "Subconjuntos no vacíos con jerarquía fuerte; sin cuadrados; regresión lineal OLS"
+}

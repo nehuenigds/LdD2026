@@ -1,0 +1,20 @@
+{
+  "seed_split": 42,
+  "test_size": 0.2,
+  "seed_folds": 42,
+  "n_folds": 5,
+  "n_original": 675,
+  "n_comparacion": 540,
+  "n_reserva_sin_evaluar": 135,
+  "orden": "Orden devuelto por train_test_split; no ordenar ni resetear el orden de filas",
+  "seleccion": "Menor MAE medio de 5 folds; desempate por menos términos y comparacion_id",
+  "n_modelos_unicos": 17,
+  "top_n_anterior": 10,
+  "limitacion": "Top 10 preseleccionado anteriormente con CV675: comparación exploratoria, no evaluación independiente",
+  "sha256_fuentes": {
+    "TP1 ramiro.ipynb": "f87601f018d6d59a522a35c946ffc69ab4fc4ce6eaaa9be9caf67a1b6dca62a0",
+    "X_train.csv": "39b7d818acec72af80307eb3752d4c1829acc2c54d6ccdd82173b466e6841c2e",
+    "y_train.csv": "771230d0e8c9d0220828f9f1bd112d528db81a3a1a165defa56ecaa316dfc669",
+    "Resultados fuerza bruta/ranking_modelos.csv": "ce648abb853bb405c74f5b6585c85cfdd2acbadebe0ba329120f225b4a84d895"
+  }
+}

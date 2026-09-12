@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explorador local de modelos de regresión para el TP1 de Laboratorio de Datos.">
+  <title>Laboratorio de regresión · TP1</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232256d9'/%3E%3Cpath d='M12 47L25 35L37 40L53 15' fill='none' stroke='white' stroke-width='5'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/style.css">
+  <script src="/plotly.js" defer></script><script src="/app.js" defer></script>
+</head>
+<body>
+  <header><div class="brandmark" aria-hidden="true">ƒ</div><div class="brand">Laboratorio de regresión <span>TP1 · Peso al nacer</span></div><div class="dataset" id="dataset">Cargando datos…</div><button class="help-button" id="help-button" aria-expanded="false">Cómo se calcula</button></header>
+  <section class="help" id="help" hidden><b>La comparación usa los mismos cinco folds.</b> Cada predicción de validación corresponde a un bebé que ese modelo no usó para entrenarse. Se exploran 540 registros; los 135 reservados y X_test no se evalúan. Ningún peso se excluye. La escala se aprende dentro de cada entrenamiento. MAE menor es mejor; una diferencia pequeña puede depender de estos folds. Las curvas usan un ajuste con los 540 registros y un perfil de referencia: ilustran el modelo y no intervienen en el MAE. Los coeficientes no demuestran causalidad. La app funciona localmente y no modifica los CSV.</section>
+  <div class="workspace">
+    <aside>
+      <div class="side-title"><h1>Modelos</h1><button id="add-model" class="add" title="Duplicar el modelo seleccionado">+ Comparar</button></div>
+      <p class="side-hint">Seleccioná un modelo para editarlo.</p>
+      <div id="models"></div>
+      <div class="editor" id="editor"></div>
+    </aside>
+    <main>
+      <div class="toolbar"><div class="tabs" role="group" aria-label="Tipo de gráfico"><button data-view="curve" class="selected" aria-pressed="true">Curvas</button><button data-view="prediction" aria-pressed="false">Real vs. predicho</button><button data-view="residual" aria-pressed="false">Residuos</button></div><label class="axis-control">Eje X <select id="axis" aria-label="Variable en el eje X"></select></label></div>
+      <div class="canvas-header"><h2 id="plot-title">Peso según aumento materno</h2><span id="status" role="status" aria-live="polite">Preparando modelos…</span></div>
+      <div id="plot" role="img" aria-label="Comparación gráfica de los modelos de regresión"></div>
+      <div id="plot-note" class="plot-note"></div>
+      <div class="results">
+        <section class="comparison"><div class="section-title"><h2>Error de validación</h2><span>MAE · libras · menor es mejor</span></div><div id="scores"></div><div class="metric-note">Δ respecto del primer modelo. Todos se evalúan sobre los mismos casos.</div></section>
+        <section class="fold-section"><div class="section-title"><h2>Comparación por fold</h2></div><div id="foldplot" role="img" aria-label="MAE de cada modelo en los cinco folds de validación"></div></section>
+      </div>
+      <details class="coefficients"><summary>Ver ecuaciones y coeficientes</summary><p>Ajustados con los 540 registros de desarrollo, expresados en las unidades originales. El MAE se calcula por separado, con validación cruzada.</p><div id="equations"></div></details>
+      <div id="error" role="alert" hidden></div>
+    </main>
+  </div>
+</body>
+</html>
